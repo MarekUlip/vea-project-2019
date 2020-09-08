@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <title>Registration</title>
+</head>
+<body>
+<div class="form">
+	<form action="save" th:action="@{/save-user}" th:object="${user}">
+		Id: <br><input type="text" name="id"  th:value="*{id}" readonly required/><br />
+		Name: <br><input type="text" th:field="*{name}" required/>
+			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span><br />
+		Surname: <br><input type="text" th:field="*{surname}" required/>
+			<span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" ></span><br />
+		Email:<br><input type="email" th:field="*{email}" required/>
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></span><br />
+		Password:<br><input type="password" th:field="*{password}" required/>
+			<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" ></span><br />
+		Register as building owner:<br><input type="checkbox" th:field="*{isBuildingOwner}"/>
+			<span th:if="${#fields.hasErrors('isBuildingOwner')}" th:errors="*{isBuildingOwner}" ></span><br />
+		
+		<input type="submit" value="Save" />
+	</form>
+	<span class="error" th:text="${errorMessage}">Static summary</span>
+	<a class="action-link-but back-but" th:href="@{/login}">Back</a>
+</div>
+</body>
+</html>

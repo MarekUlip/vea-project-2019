@@ -1,0 +1,16 @@
+logger:
+  level:
+    ROOT: DEBUG
+spring: 
+  thymeleaf:
+    cache: false
+    cacheable: false
+  datasource:
+    url: jdbc:derby://localhost/veaProject;create=true
+    driverClassName: org.apache.derby.jdbc.ClientDriver
+    username: app
+    password: app
+  jpa:
+    hibernate.ddl-auto: update #create-drop
+    show-sql: true
+    generate-ddl: true

@@ -1,0 +1,96 @@
+input{
+    border-radius: 5px;
+    border: 1px solid  #0d8bf2;
+    min-width: 200px;
+max-width: 50%;
+font-size: 24px;
+padding: 12px;
+margin: 5px 5px;
+}
+
+input:hover{
+    border-color: #2196F3;
+}
+
+input[type="submit"], .action-link-but{
+	color: black;
+	text-decoration: none;
+    background: #0d8bf2;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 18px;
+    margin: 5px 5px;
+    cursor: pointer;
+}
+input[type="submit"]:hover,.action-link-but:hover{
+    background: #2196F3;
+}
+
+.error{
+	color:red;
+}
+
+body{
+    background: #f4fcff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+table, th, td {
+    border: 3px solid #0d8bf2;
+ }
+
+.form {
+	width: 500px;
+	height: 300px;
+	
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+}
+
+ table{
+     border-collapse: collapse;
+     background: white;
+     width: 100%;
+ }
+
+ .logout-but{
+     position: fixed;
+     right: 10px;
+     top: 10px;
+ }
+
+ .back-but{
+     position: fixed;
+     left: 10px;
+     bottom: 10px;
+ }
+ 
+ .reservations{
+ 	margin-top: 50px;
+ }
+
+ a{
+     color:  #0d8bf2;
+ }
+
+ a:hover{
+     color: black;
+ }
+
+.cont{
+    display: inline-block;
+}
+
+select {
+    width: 200px;
+    font-size: 24px;
+    border: 2px solid  #0d8bf2;
+    border-radius: 5px;
+}
+

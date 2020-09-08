@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <title>Reservations</title>
+</head>
+<body>
+	<div th:if="${@userService.isBuildingOwner()}">
+		<a class="action-link-but" th:href="@{/new-building}">New building</a>
+		<a class="action-link-but" th:href="@{/new-room}">New room</a>
+	</div>
+	<form th:action="@{/logout}">
+		<input type="submit" value="Logout" class="logout-but" />
+	</form>
+
+<div class="reservations">
+<table class="table">
+		<tr>
+			<th>Id</th>
+			<th>Time From</th>
+			<th>Time To</th>
+			<th>Room</th>
+			<th>Reservationist</th>
+			 <th colspan="2">Options</th>
+
+		</tr>
+		<tr th:each="reservation : ${reservationsList}">
+			<td th:text="${reservation.id}"></td>
+			<td th:text="${reservation.timeFrom}"></td>
+			<td th:text="${reservation.timeTo}"></td>
+			<td th:text="${reservation.room.roomName}"></td>
+			<td th:text="${reservation.owner.email}"></td>
+			<td th:if="${reservation.isEditable}" class="btn btn-secondary"><a th:href="@{/edit-reservation/{id}(id=${reservation.id})}" class="btn btn-secondary">Edit</a></td>
+			<td th:if="${reservation.isEditable}" class="btn btn-secondary"><a th:href="@{/delete-reservation/{id}(id=${reservation.id})}" class="btn btn-secondary">Delete</a></td>
+		</tr>
+	</table>
+	<form th:action="@{/new-reservation}">
+		<input type="submit" value="New" class="btn btn-primary" />
+	</form>
+</div>
+</body>
+</html>

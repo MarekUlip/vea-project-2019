@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <title>Edit Reservation</title>
+</head>
+<body>
+
+	<form th:action="@{/logout}">
+		<input type="submit" value="Logout" class="logout-but" />
+	</form>
+<div class="form">
+	<form action="save" th:action="@{/save-reservation}" th:object="${reservation}">
+		Id: <br><input type="text" name="id"  th:value="*{id}" readonly/><br />
+		Date from: <br><input type="text" th:field="*{timeFrom}" required/>
+			<span th:if="${#fields.hasErrors('timeFrom')}" th:errors="*{timeFrom}" ></span><br />
+		Date to: <br><input type="text" th:field="*{timeTo}" required/>
+			<span th:if="${#fields.hasErrors('timeTo')}" th:errors="*{timeTo}" ></span><br />
+		Room to rent: <br><select th:field="*{room}">
+					<option th:each="r : ${@roomService.getAllRooms()}"
+						th:text="${r.roomName}" th:value="${r.id}">room</option>
+				  </select>
+				  <span th:if="${#fields.hasErrors('room')}" th:errors="*{room}" ></span><br />
+		
+		<input type="submit" value="Save" />
+	</form>
+	<span class="error" th:text="${errorMessage}">Static summary</span>
+	<a class="action-link-but back-but" th:href="@{/reservations}">Back</a>
+</div>
+</body>
+</html>

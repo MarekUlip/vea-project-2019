@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <title>Login</title>
+</head>
+<body>
+<div class="form">
+<span th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}"/>
+	<form id="form-1" action="/login" method="post">
+		<label>Email: </label><br>
+		<input type="email" label="Email" id="username" name="username" required/> <br />
+		<label>Password: </label><br>
+		<input label="Password" type="password" id="password" name="password" required/> <br />
+		<input type="submit" value="Login" />
+		<input type="hidden" th:name=${_csrf.parameterName}
+		th:value="${_csrf.token}"
+		/>		
+	</form>
+	<span class="error" th:text="${errorMessage}">Static summary</span>
+	<form th:action="@{/new-user}">
+		<input type="submit" value="Register" />
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <title>Edit Building</title>
+</head>
+<body>
+
+	<form th:action="@{/logout}">
+		<input type="submit" value="Logout" class="logout-but" />
+	</form>
+<div class="form">
+	<form action="save" th:action="@{/save-building}" th:object="${building}">
+		Id: <br>
+		<input type="text" name="id"  th:value="*{id}" readonly required/><br />
+		Street: <br>
+		<input type="text" th:field="*{street}" required/>
+			<span th:if="${#fields.hasErrors('street')}" th:errors="*{street}" ></span><br />
+		Code:<br>
+		<input type="text" th:field="*{code}" required/>
+			<span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" ></span><br />
+		Town:<br>
+		<input type="text" th:field="*{town}" required/>
+			<span th:if="${#fields.hasErrors('town')}" th:errors="*{town}" ></span><br />
+		
+		<input type="submit" value="Save" />
+	</form>
+	<span class="error" th:text="${errorMessage}">Static summary</span>
+	<a class="action-link-but back-but" th:href="@{/reservations}">Back</a>
+</div>
+</body>
+</html>
